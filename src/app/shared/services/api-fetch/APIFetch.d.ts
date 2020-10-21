@@ -37,7 +37,7 @@ export interface APIStructuredResponseErrorItem {
 }
 
 export interface APIStructuredResponse<R = unknown, M = APIStructuredResponseMetaDefault> {
-  meta: M,
-  result?: R,
-  errors?: APIStructuredResponseErrorItem[],
+  meta: M;
+  result?: R;
+  errors?: APIStructuredResponseErrorItem[];
 }

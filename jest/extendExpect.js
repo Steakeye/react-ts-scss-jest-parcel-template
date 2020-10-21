@@ -7,7 +7,7 @@ expect.extend({
     const expectedJSXString = reactElementToJSXString(expected);
 
     const pass = receivedJSXString === expectedJSXString;
-    let resultMessageMatchFragment = pass ? 'to match' : 'to not match';
+    const resultMessageMatchFragment = pass ? 'to match' : 'to not match';
 
     return {
       message() {

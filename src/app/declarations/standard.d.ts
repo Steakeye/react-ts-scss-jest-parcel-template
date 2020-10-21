@@ -10,7 +10,7 @@ export interface POJSObject<T = unknown> {
 }*/
 
 // Plain Old JavaScript Dictionary
-export interface POJSODictionary extends POJSObject<string> {}
+export type POJSODictionary = POJSObject<string>
 
 //JSON
 export type JSONPrimitives = null | boolean | number | string;
@@ -19,8 +19,8 @@ export type JSONProperties<P extends unknown = undefined> =
   | JSONObject
   | JSONArray
   | P;
-export interface JSONObject extends POJSObject<JSONProperties> {}
-export interface JSONArray extends Array<JSONProperties> {}
+export type JSONObject = POJSObject<JSONProperties>
+export type JSONArray = Array<JSONProperties>
 export type JSONData<T> = JSONProperties<T>;
 
 //Advanced Utility Types

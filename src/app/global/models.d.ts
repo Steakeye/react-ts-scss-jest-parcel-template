@@ -2,7 +2,7 @@ import { Optional, OptionalN } from '~/app/declarations/standard';
 
 export interface BaseReducerDispatchAction<Data, Type, SubType = undefined, Meta = undefined> {
   type: Type;
-  subType?: SubType
+  subType?: SubType;
   data?: Data;
   meta?: Meta;
 }
@@ -28,7 +28,7 @@ export interface FetchPaginatedServiceHookStates
   page: OptionalN<number>;
 }
 
-export interface FetchServiceHookReducerDispatchAction<
+export type FetchServiceHookReducerDispatchAction<
   Data,
   Type extends ImmutableDataReducerActionTypes = ImmutableDataReducerActionTypes
-> extends BaseReducerDispatchAction<Data, Type> {}
+> = BaseReducerDispatchAction<Data, Type>
