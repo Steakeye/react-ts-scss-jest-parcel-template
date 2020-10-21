@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth view - handles auth default behaviour renders without error 1`] = `
+<div>
+  <main />
+</div>
+`;
+
+exports[`Auth view - handles auth when a redirect value is passed renders without error 1`] = `
+<div>
+  <span
+    data-mock="Redirect"
+    data-testid="mock-redirect"
+    to="/mockPath"
+  >
+    Mock Redirect
+  </span>
+</div>
+`;
+
+exports[`Auth view - handles auth when an auth error occurs renders without error 1`] = `
+<div>
+  <span
+    data-mock="Redirect"
+    data-testid="mock-redirect"
+    to="/mockErrorPath"
+  >
+    Mock Redirect
+  </span>
+</div>
+`;

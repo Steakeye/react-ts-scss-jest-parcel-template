@@ -1,0 +1,205 @@
+@use 'layout';
+@use 'icons';
+@use 'type';
+@use 'color';
+
+//Table
+@use 'components/table';
+@forward 'components/table';
+
+// Generic component styling
+
+//Static elements
+//Images
+//TODO
+
+//Passive elements
+//Loaders
+//TODO
+
+//Base interactive abstraction
+@mixin interactive() {
+  cursor: pointer;
+}
+
+@mixin extend_interactive() {
+  @extend .interactive;
+}
+
+/*
+* Buttons
+*/
+/*
+Core button configuration
+TODO
+*/
+
+%buttonBoxModel {
+  @include layout.border-box;
+}
+
+%button-padding {
+  /* padding: TODO; */
+}
+
+@mixin button-base {
+  @extend %buttonBoxModel;
+  @extend %button-padding;
+}
+
+//Basic button
+%button {
+  @extend .buttonBoxModel;
+  /*border-radius: TODO;*/
+  text-align: center;
+}
+
+//Buttons - level/size variations
+%primaryButton {
+  //TODO
+}
+
+%secondaryButton {
+  //TODO
+}
+
+%tertiaryButton {
+  //TODO
+}
+
+%quaternaryButton {
+  //TODO
+}
+
+/*%quinaryButton {
+  //TODO
+}*/
+
+//Button colour rules
+//Default theme
+%solidButtonDefaultTheme {
+  /*color: TODO*/
+  /*background-color: TODO*/
+
+  &:hover,
+  &:focus {
+    /*color: TODO*/
+    /*background-color: TODO*/
+  }
+
+  &[disabled],
+  &.disabled {
+    &,
+    &:hover {
+      /*color: TODO*/
+      /*background-color: TODO*/
+    }
+  }
+}
+
+%outlineButtonDefaultTheme {
+  /* color: TODO */
+  /* border-color: TODO */
+  border-width: 1px;
+
+  &:hover,
+  &:focus {
+    /* color: TODO */
+    /* border-color: TODO */
+  }
+
+  &[disabled],
+  &.disabled {
+    &,
+    &:hover {
+      /*color: TODO*/
+      /*border-color: TODO*/
+    }
+  }
+}
+
+//Links (and button links)
+%textLink {
+  @extend %link !optional;
+  /*color: TODO; */
+}
+
+@mixin extendTextLink() {
+  @extend %textLink;
+}
+
+%buttonAsLink {
+  @extend %link !optional;
+
+  @include interactive;
+
+  display: inline-block;
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: unset;
+}
+
+%buttonAsTextLink {
+  @extend %buttonAsLink;
+  @extend %textLink;
+
+  &:hover {
+    background: transparent;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin extendButtonAsLink {
+  @extend %buttonAsLink;
+}
+
+//Dropdowns
+//TODO
+
+//Tooltip
+//TODO
+
+//Notifications
+//TODO
+
+//Generic form inputs
+%formInput {
+  //TODO
+  &:focus,
+  &:hover {
+    /*border-color: TODO;*/
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+%customScroll {
+  &::-webkit-scrollbar {
+    /*width: TODO*/
+    /*height: TODO*/
+  }
+  &::-webkit-scrollbar-thumb {
+    /*background-color: TODO*/
+    /*border: TODO*/
+    /*border-radius: TODO*/
+    /*background-clip: TODO*/
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    /*background-color: TODO*/
+  }
+  &::-webkit-scrollbar-track {
+    /*background-color: TODO*/
+  }
+  &::-webkit-scrollbar-corner {
+    /*background: TODO*/
+  }
+}
+
+//Warning Message
+//TODO

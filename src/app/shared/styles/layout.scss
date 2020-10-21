@@ -1,0 +1,103 @@
+@use "color";
+// Abstract values (not to be accessed outside of this class)
+//TODO
+
+//Default primitive spacing values
+//TODO
+
+//Z index
+$global-z-top: 3000;
+$header-z-top: 2000;
+$main-z-top: 1000;
+
+// Height constants
+//TODO
+
+// Width constants
+//TODO
+
+//Core media queries
+$phone: 'phone';
+$tablet--portrait: 'tablet--portrait';
+$tablet--landscape: 'tablet--landscape';
+$desktop--small: 'desktop--small';
+$desktop: 'desktop';
+$desktop--large: 'desktop--large';
+$retina: 'retina';
+$print: 'print';
+
+//For more details on other retina options, see: //https://css-tricks.com/snippets/css/retina-display-media-query/
+@mixin for-device($device) {
+  @if $device == $phone {
+    @media (max-width: 599px) {
+      @content;
+    }
+  } @else if $device == $tablet--portrait {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $device == $desktop--small {
+    @media (min-width: 800px) and (hover: hover) {
+      @content;
+    }
+  } @else if $device == $tablet--landscape {
+    @media (min-width: 900px) and (hover: none) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $device == $desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $device == $desktop--large {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  } @else if $device == $retina {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      @content;
+    }
+  } @else if $device == $print {
+    @media print {
+      @content;
+    }
+  }
+}
+
+//Core layout treatments
+@mixin visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+%visuallyHidden {
+  @include visuallyHidden;
+}
+
+@mixin extendVisuallyHidden {
+  @extend %visuallyHidden;
+}
+
+%bordered {
+  border-width: 1px;
+  border-style: solid;
+}
+
+@mixin extendBordered {
+  @extend %bordered;
+}
+
+%borderBoxSizing {
+  box-sizing: border-box;
+}
+
+@mixin extendBorderBoxSizing {
+  @extend %borderBoxSizing;
+}

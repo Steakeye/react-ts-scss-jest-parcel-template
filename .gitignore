@@ -1,0 +1,11 @@
+.DS_store
+node_modules
+.cache
+.jest-cache
+.jest-coverage
+.idea
+dev
+dist
+reports
+yarn-error.log
+**/*.scss.d.ts

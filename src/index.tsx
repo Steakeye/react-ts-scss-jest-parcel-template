@@ -1,0 +1,9 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import './index.scss';
+import { App } from './app/App';
+import { getApplicationRootNode } from '~/app/shared/utils/AppDOM';
+
+const mountNode = getApplicationRootNode();
+
+ReactDOM.render(<App />, mountNode);

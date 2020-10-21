@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserStore module - exposes persistent user data UserStore component - composes the user data provider and children components expected behaviour is composes the store and children 1`] = `
+<div>
+  <span
+    data-mock="UserStoreProvider"
+    data-testid="mock-user-store-provider"
+    value="mock-user"
+  >
+    store children
+  </span>
+</div>
+`;
