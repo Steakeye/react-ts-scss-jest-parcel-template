@@ -5,7 +5,7 @@ import { useUserData } from '~/app/stores/user/UserContext';
 import { AnyView, ExtendedRouteProps } from './AppRoutes.d';
 import { redirectToAuth } from '~/app/shared/utils/Auth';
 import { OptionalN } from '~/app/declarations/standard';
-import {Route, useLocation} from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 export function AuthenticatedRoute({ component, ...rest }: ExtendedRouteProps) {
   const View: AnyView = component as AnyView;

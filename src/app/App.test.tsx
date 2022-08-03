@@ -25,7 +25,7 @@ jest.mock('./AppRoutes', () => ({
 
 // tslint:disable-next-line:ban
 describe.skip('App entrypoint', () => {
-  let App: React.JSXElementConstructor<{}>;
+  let App: React.JSXElementConstructor<Record<string, unknown>>;
   let appInstance: RenderResult;
 
   beforeAll(async () => {

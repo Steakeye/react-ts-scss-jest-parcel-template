@@ -1,7 +1,7 @@
 import React from 'react';
 import '@auth/auth-spa-js';
 import { OptionalN } from '~/app/declarations/standard';
-import {RedirectLoginOptions} from "~/app/shared/utils/Auth";
+import { RedirectLoginOptions } from '~/app/shared/utils/Auth';
 
 interface AuthData {
   isReady: boolean;

@@ -1,6 +1,8 @@
 import { BaseReducerActionType } from '~/app/global/models';
 
-export type UserContextData = User & {};
+type User = Record<string, unknown>;
+
+export type UserContextData = User & Record<string, unknown>;
 
 type UserReducerActionType =
   | BaseReducerActionType.Read

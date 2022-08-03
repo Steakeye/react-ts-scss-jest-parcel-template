@@ -7,13 +7,11 @@ describe('APIFetchError - custom Error type for failed API requests', () => {
     {
       id: 'mock-error-one',
       description: 'mock-error-one-description',
-      // eslint-disable-next-line @typescript-eslint/camelcase
       field_name: 'mock-error-one-field-name',
     },
     {
       id: 'mock-error-two',
       description: 'mock-error-two-description',
-      // eslint-disable-next-line @typescript-eslint/camelcase
       field_name: 'mock-error-two-field-name',
     },
   ] as APIStructuredResponseErrorItem[];

@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import { BrowserRouter, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter, PathRouteProps } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory, Location, MemoryHistoryOptions } from 'history';
-import { match } from 'react-router-dom';
+// import { match } from 'react-router-dom';
 import { RenderResult } from '@testing-library/react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// eslint-disable-next-line
 // @ts-ignore
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Optional } from '~/app/declarations/standard';
@@ -60,7 +60,7 @@ function mutateProps(
 
       props[key] = parsedVal;
     } else if (stringifyObjects && typeof val === 'object') {
-      props[key] = JSON.stringify(val as {});
+      props[key] = JSON.stringify(val as Record<string, unknown>);
     } else {
       props[key] = val;
     }
@@ -77,7 +77,7 @@ export function createRouteComponentProps<T>({
   history,
   location,
   match,
-}: MockRouteComponentProps<T> = {}): RouteComponentProps<T> {
+}: MockRouteComponentProps<T> = {}): PathRouteProps {
   const defaultLocation = {
     pathname: '',
     search: '',
@@ -114,8 +114,8 @@ export function createMockComponent(
 export function createMockContextConsumer(
   componentName: string,
   testId: string,
-  mockState: {} = {}
-): jest.Mock<React.Consumer<{}>> {
+  mockState: Record<string, unknown> = {}
+): jest.Mocked<React.Consumer<Record<string, unknown>>> {
   return jest.fn(props => {
     const { children } = props;
 
@@ -125,17 +125,11 @@ export function createMockContextConsumer(
   });
 }
 
-export function getMockCallValue<T extends unknown>(
-  mock: jest.Mock,
-  index = 0
-): T[] {
+export function getMockCallValue<T>(mock: jest.Mocked, index = 0): T[] {
   return mock.mock.calls[index] as T[];
 }
 
-export function getMockReturnValue<T extends unknown>(
-  mock: jest.Mock,
-  index = 0
-): T {
+export function getMockReturnValue<T>(mock: jest.Mocked, index = 0): T {
   return mock.mock.results[index].value as T;
 }
 

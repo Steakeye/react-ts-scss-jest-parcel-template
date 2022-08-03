@@ -15,7 +15,7 @@
     "test:ts": "jest",
     "test": "npm run test:ts",
     "lint": "npm run lint:ts && npm run lint:scss",
-    "lint:fix-ts": "gts fix",
+    "lint:ts-fix": "gts fix",
     "lint:ts": "gts check",
     "lint:scss": "stylelint src/**/*.scss",
     "prepare": "echo No prepare scripts set",

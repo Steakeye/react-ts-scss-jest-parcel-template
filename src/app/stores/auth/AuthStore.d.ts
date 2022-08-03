@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { PathRouteProps } from 'react-router';
 import { ImmutableDataReducerActionTypes } from '~/app/global/models.d';
 import {
-  AuthData,
   AuthInternalData,
   AuthRedirectAppState,
 } from '~/app/stores/auth/AuthContext.d';
@@ -24,6 +23,6 @@ interface AuthProviderProps extends Partial<TempAuthClientOptions> {
 
 type AuthStoreProps = React.PropsWithChildren<AuthProviderProps>;
 
-type AuthStoreFC = (props: AuthStoreProps & RouteComponentProps) => JSX.Element;
+type AuthStoreFC = (props: AuthStoreProps & PathRouteProps) => JSX.Element;
 
 type DefaultRedirectCallback = (result: AuthRedirectAppState) => void;

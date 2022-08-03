@@ -17,13 +17,15 @@ function App() {
           <Routes>
             {AppRoutes.filter(routeConfig => !routeConfig.disabled).map(
               routeConfig => {
-                const { component: View, requiresAuth, ...restOfRouteConfig } = routeConfig;
+                const {
+                  component: View,
+                  requiresAuth,
+                  ...restOfRouteConfig
+                } = routeConfig;
 
                 return requiresAuth ? (
                   <Route key={`${JSON.stringify(routeConfig.path)}`}>
-                    <AuthenticatedRoute
-                      {...routeConfig}
-                    />
+                    <AuthenticatedRoute {...routeConfig} />
                   </Route>
                 ) : (
                   <Route

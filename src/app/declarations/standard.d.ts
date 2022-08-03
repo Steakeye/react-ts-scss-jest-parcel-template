@@ -14,18 +14,17 @@ export type POJSODictionary = Record<string, string>;
 
 //JSON
 export type JSONPrimitives = null | boolean | number | string;
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-export type JSONProperties<P extends unknown = undefined> =
+
+export type JSONProperties<P = undefined> =
   | JSONPrimitives
   | JSONObject
   | JSONArray
   | P;
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// eslint-disable-next-line
 // @ts-ignore
 export type JSONObject = Record<string, JSONProperties>;
 export type JSONArray = Array<JSONProperties>;
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// eslint-disable-next-line
 // @ts-ignore
 export type JSONData<T> = JSONProperties<T>;
 

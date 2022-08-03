@@ -8,7 +8,7 @@ declare namespace JSX {
       | string
       | number
       | boolean
-      | {}
+      | Record<string, unknown>
       | null;
     context?: any;
     className?: string;

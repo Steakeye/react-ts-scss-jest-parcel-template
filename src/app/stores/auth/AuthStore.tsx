@@ -38,6 +38,7 @@ function authReducer(
   return updatedState;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 function mockAuthRedirect() {}
 
 export const AuthStore = ({

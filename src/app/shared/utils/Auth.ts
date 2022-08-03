@@ -22,7 +22,6 @@ export function redirectToAuth(
   };
 
   authRedirect({
-    // eslint-disable-next-line @typescript-eslint/camelcase
     redirect_uri: `${root}${AUTH_ROUTE}`,
     appState,
   });

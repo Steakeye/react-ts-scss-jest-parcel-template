@@ -1,4 +1,4 @@
-import { Optional, OptionalN } from '~/app/declarations/standard';
+import { OptionalN } from '~/app/declarations/standard';
 
 export interface BaseReducerDispatchAction<
   Data,

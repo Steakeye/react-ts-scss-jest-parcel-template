@@ -1,4 +1,10 @@
-import { PathRouteProps, LayoutRouteProps, IndexRouteProps, RouteProps, Switch } from 'react-router-dom';
+import {
+  PathRouteProps,
+  LayoutRouteProps,
+  IndexRouteProps,
+  RouteProps,
+  Switch,
+} from 'react-router-dom';
 import { FunctionComponent, default as React, ReactElement } from 'react';
 
 export type AnyView =
@@ -7,7 +13,10 @@ export type AnyView =
   // tslint:disable-next-line:no-any
   | React.ComponentType<any>;
 
-type ReactRouterRoutesUnion = PathRouteProps | LayoutRouteProps | IndexRouteProps;
+type ReactRouterRoutesUnion =
+  | PathRouteProps
+  | LayoutRouteProps
+  | IndexRouteProps;
 
 export interface ExtendedRouteProps extends PathRouteProps {
   readonly name?: string;
@@ -15,7 +24,7 @@ export interface ExtendedRouteProps extends PathRouteProps {
   readonly requiresAuth?: boolean;
   readonly scrollToTop?: boolean;
   readonly disabled?: boolean;
-  readonly component: AnyView
+  readonly component: AnyView;
 }
 
 interface UrlPatternOptions {
@@ -31,5 +40,5 @@ interface UrlPatternOptions {
 export interface UrlPattern {
   // eslint-disable-next-line @typescript-eslint/no-misused-new
   new (path: string, options?: UrlPatternOptions): UrlPattern;
-  match(path: string): {} | undefined ;
+  match(path: string): Record<string, unknown> | undefined;
 }
