@@ -27,14 +27,14 @@ jest.mock('~/app/AppStrings', () => ({
   },
 }));
 
-const queryGetter = jest.fn()
+const queryGetter = jest.fn();
 
 jest.doMock('react-router', () => ({
   Navigate: createMockComponent('Navigate', 'mock-navigate'),
 }));
 
 jest.doMock('react-router-dom', () => ({
-  useSearchParams: jest.fn(() => [{ get: queryGetter }])
+  useSearchParams: jest.fn(() => [{ get: queryGetter }]),
 }));
 
 describe('Auth view - handles auth', () => {
@@ -97,7 +97,10 @@ describe('Auth view - handles auth', () => {
     it('and the navigate component is used', () => {
       expect(navigate).toHaveBeenCalled();
       expect(navigate).toHaveBeenCalledTimes(1);
-      expect(navigate).toHaveBeenCalledWith({ replace: true, to: '/mockPath' }, {});
+      expect(navigate).toHaveBeenCalledWith(
+        { replace: true, to: '/mockPath' },
+        {}
+      );
     });
   });
 
@@ -126,7 +129,10 @@ describe('Auth view - handles auth', () => {
     it('and the navigate component is used', () => {
       expect(navigate).toHaveBeenCalled();
       expect(navigate).toHaveBeenCalledTimes(1);
-      expect(navigate).toHaveBeenCalledWith({ replace: true, to: '/mockErrorPath' }, {});
+      expect(navigate).toHaveBeenCalledWith(
+        { replace: true, to: '/mockErrorPath' },
+        {}
+      );
     });
   });
 });
