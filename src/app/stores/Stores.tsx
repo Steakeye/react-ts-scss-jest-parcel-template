@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AuthStoreWithRouter as Auth } from './auth/AuthStore';
+import { AuthStore as Auth } from './auth/AuthStore';
 import { UserStore as User } from './user/UserStore';
 
 export type WithStoreWrappedComponent = React.JSXElementConstructor<

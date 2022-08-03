@@ -1,10 +1,9 @@
 import React, { ReactElement, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Optional } from '~/app/declarations/standard';
 import { getRouteConfigFromPath } from '~/app/AppRoutesUtils';
 import { AppRoutes } from '~/app/AppRoutes';
 import { ExtendedRouteProps } from '~/app/AppRoutes.d';
-import { AppHistoryFC, AppHistoryProps } from './AppHistory.d';
+import { AppHistoryProps } from './AppHistory.d';
 
 function HistoryContainer(props: AppHistoryProps): ReactElement {
   useEffect(() => {
@@ -23,6 +22,5 @@ function HistoryContainer(props: AppHistoryProps): ReactElement {
   return <>{props.children}</>;
 }
 
-const withHistory = withRouter<AppHistoryProps, AppHistoryFC>(HistoryContainer);
 
-export { withHistory as AppHistory };
+export { HistoryContainer as AppHistory };

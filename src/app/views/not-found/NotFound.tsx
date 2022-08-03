@@ -42,10 +42,7 @@ function notFoundMetaDataComponents(): JSX.Element {
   );
 }
 
-function NotFound({
-  location: { search: query },
-  match: { params, url },
-}: RouteComponentProps<NotFoundFCProps>) {
+function NotFound() {
   return (
     <>
       {/* Meta content */}

@@ -21,7 +21,6 @@ function createInitialState(): AuthInternalData {
     isAuthError: false,
     user: undefined,
     loading: true,
-    popupOpen: false,
   };
 }
 
@@ -76,10 +75,3 @@ export const AuthStore = ({
     </AuthContext.Provider>
   );
 };
-
-const authStoreWithRouter = withRouter<
-  AuthStoreProps & RouteComponentProps,
-  AuthStoreFC
->(AuthStore);
-
-export { authStoreWithRouter as AuthStoreWithRouter };

@@ -9,7 +9,7 @@ interface AuthData {
   isAuthError: boolean;
   user: unknown;
   loading: boolean;
-  loginWithRedirect: (options?: RedirectLoginOptions) => void;
+  loginWithRedirect?: (options?: RedirectLoginOptions) => void;
 }
 
 export interface AuthRedirectAppState<S = unknown> {

@@ -35,10 +35,7 @@ function homeMetaDataComponents(): JSX.Element {
   );
 }
 
-function Home({
-  location: { search: query },
-  match: { params, url },
-}: RoutesProps) {
+function Home() {
   return (
     <>
       {/* Meta content */}
