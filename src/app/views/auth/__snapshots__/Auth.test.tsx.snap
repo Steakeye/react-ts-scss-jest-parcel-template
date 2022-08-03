@@ -6,14 +6,15 @@ exports[`Auth view - handles auth default behaviour renders without error 1`] = 
 </div>
 `;
 
-exports[`Auth view - handles auth when a redirect value is passed renders without error 1`] = `
+exports[`Auth view - handles auth when a navigate value is passed renders without error 1`] = `
 <div>
   <span
-    data-mock="Redirect"
-    data-testid="mock-redirect"
+    data-mock="Navigate"
+    data-testid="mock-navigate"
+    replace="true"
     to="/mockPath"
   >
-    Mock Redirect
+    Mock Navigate
   </span>
 </div>
 `;
@@ -21,11 +22,12 @@ exports[`Auth view - handles auth when a redirect value is passed renders withou
 exports[`Auth view - handles auth when an auth error occurs renders without error 1`] = `
 <div>
   <span
-    data-mock="Redirect"
-    data-testid="mock-redirect"
+    data-mock="Navigate"
+    data-testid="mock-navigate"
+    replace="true"
     to="/mockErrorPath"
   >
-    Mock Redirect
+    Mock Navigate
   </span>
 </div>
 `;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line node/no-extraneous-import
-import { RedirectProps, Redirect } from 'react-router';
+import { Navigate, NavigateProps } from 'react-router';
 import { render, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import {
@@ -9,12 +9,6 @@ import {
 } from '~/app/../../jest-utils/Helpers';
 import { useAuth } from '~/app/stores/auth/AuthContext';
 import { AuthFCProps, AuthFC } from './Auth.d';
-
-const mockURLParamGet = jest.fn();
-
-global.URLSearchParams = jest.fn(x => ({
-  get: mockURLParamGet,
-}));
 
 jest.mock('~/app/stores/auth/AuthContext', () => ({
   useAuth: jest.fn().mockReturnValue({ isAuthError: false }),
@@ -33,20 +27,26 @@ jest.mock('~/app/AppStrings', () => ({
   },
 }));
 
+const queryGetter = jest.fn()
+
 jest.doMock('react-router', () => ({
-  Redirect: createMockComponent('Redirect', 'mock-redirect'),
+  Navigate: createMockComponent('Navigate', 'mock-navigate'),
+}));
+
+jest.doMock('react-router-dom', () => ({
+  useSearchParams: jest.fn(() => [{ get: queryGetter }])
 }));
 
 describe('Auth view - handles auth', () => {
   let Auth: AuthFC;
   let authInstance: RenderResult;
-  let redirect: (props: RedirectProps) => Redirect;
+  let navigate: (props: NavigateProps) => typeof Navigate;
 
   beforeAll(async () => {
     ({ Auth } = await import('./Auth'));
-    redirect = ((await import('react-router')).Redirect as unknown) as (
-      props: RedirectProps
-    ) => Redirect;
+    navigate = ((await import('react-router')).Navigate as unknown) as (
+      props: NavigateProps
+    ) => typeof Navigate;
   });
 
   describe('default behaviour', () => {
@@ -56,8 +56,7 @@ describe('Auth view - handles auth', () => {
     });
 
     afterAll(() => {
-      (global.URLSearchParams as jest.Mock).mockClear();
-      (mockURLParamGet as jest.Mock).mockClear();
+      (queryGetter as jest.Mock).mockClear();
     });
 
     it('renders without error', () => {
@@ -72,22 +71,16 @@ describe('Auth view - handles auth', () => {
     });
 
     it('the query string is parsed', () => {
-      expect(global.URLSearchParams).toHaveBeenCalled();
-      expect(global.URLSearchParams).toHaveBeenCalledTimes(1);
-      expect(global.URLSearchParams).toHaveBeenCalledWith('');
-      expect(mockURLParamGet).toHaveBeenCalled();
-      expect(mockURLParamGet).toHaveBeenCalledTimes(1);
-      expect(mockURLParamGet).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
+      expect(queryGetter).toHaveBeenCalled();
+      expect(queryGetter).toHaveBeenCalledTimes(1);
+      expect(queryGetter).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
     });
   });
 
-  describe('when a redirect value is passed', () => {
+  describe('when a navigate value is passed', () => {
     beforeAll(() => {
-      const defaultProps = createRouteComponentProps<AuthFCProps>({
-        location: { search: '?mockRedirectKey=/mockPath' },
-      });
-      (mockURLParamGet as jest.Mock).mockReturnValue('/mockPath');
-      authInstance = render(<Auth {...defaultProps} />);
+      (queryGetter as jest.Mock).mockReturnValue('/mockPath');
+      authInstance = render(<Auth />);
     });
 
     it('renders without error', () => {
@@ -96,35 +89,27 @@ describe('Auth view - handles auth', () => {
     });
 
     it('the query string is parsed', () => {
-      expect(global.URLSearchParams).toHaveBeenCalled();
-      expect(global.URLSearchParams).toHaveBeenCalledTimes(1);
-      expect(global.URLSearchParams).toHaveBeenCalledWith(
-        '?mockRedirectKey=/mockPath'
-      );
-      expect(mockURLParamGet).toHaveBeenCalled();
-      expect(mockURLParamGet).toHaveBeenCalledTimes(1);
-      expect(mockURLParamGet).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
+      expect(queryGetter).toHaveBeenCalled();
+      expect(queryGetter).toHaveBeenCalledTimes(1);
+      expect(queryGetter).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
     });
 
-    it('and the redirect component is used', () => {
-      expect(redirect).toHaveBeenCalled();
-      expect(redirect).toHaveBeenCalledTimes(1);
-      expect(redirect).toHaveBeenCalledWith({ to: '/mockPath' }, {});
+    it('and the navigate component is used', () => {
+      expect(navigate).toHaveBeenCalled();
+      expect(navigate).toHaveBeenCalledTimes(1);
+      expect(navigate).toHaveBeenCalledWith({ replace: true, to: '/mockPath' }, {});
     });
   });
 
   describe('when an auth error occurs', () => {
     beforeAll(() => {
-      const defaultProps = createRouteComponentProps<AuthFCProps>();
-
       (useAuth as jest.Mock).mockReturnValue({
         isAuthError: true,
       });
-      (global.URLSearchParams as jest.Mock).mockClear();
-      (mockURLParamGet as jest.Mock).mockClear();
-      (redirect as jest.Mock).mockClear();
+      (queryGetter as jest.Mock).mockClear();
+      (navigate as jest.Mock).mockClear();
 
-      authInstance = render(<Auth {...defaultProps} />);
+      authInstance = render(<Auth />);
     });
 
     it('renders without error', () => {
@@ -133,18 +118,15 @@ describe('Auth view - handles auth', () => {
     });
 
     it('the query string is parsed', () => {
-      expect(global.URLSearchParams).toHaveBeenCalled();
-      expect(global.URLSearchParams).toHaveBeenCalledTimes(1);
-      expect(global.URLSearchParams).toHaveBeenCalledWith('');
-      expect(mockURLParamGet).toHaveBeenCalled();
-      expect(mockURLParamGet).toHaveBeenCalledTimes(1);
-      expect(mockURLParamGet).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
+      expect(queryGetter).toHaveBeenCalled();
+      expect(queryGetter).toHaveBeenCalledTimes(1);
+      expect(queryGetter).toHaveBeenCalledWith('TEMP_REDIRECT_QUERY_KEY');
     });
 
-    it('and the redirect component is used', () => {
-      expect(redirect).toHaveBeenCalled();
-      expect(redirect).toHaveBeenCalledTimes(1);
-      expect(redirect).toHaveBeenCalledWith({ to: '/mockErrorPath' }, {});
+    it('and the navigate component is used', () => {
+      expect(navigate).toHaveBeenCalled();
+      expect(navigate).toHaveBeenCalledTimes(1);
+      expect(navigate).toHaveBeenCalledWith({ replace: true, to: '/mockErrorPath' }, {});
     });
   });
 });
