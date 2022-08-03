@@ -21,7 +21,8 @@ expect.extend({
     const foundTagName = received.constructor.name;
     const isPass = received.constructor.name === foundTagName;
     return {
-      message: () => `expected ${expected} ${isPass ? 'and': 'but'} got ${foundTagName}`,
+      message: () =>
+        `expected ${expected} ${isPass ? 'and' : 'but'} got ${foundTagName}`,
       pass: isPass,
     };
   },

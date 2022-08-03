@@ -5,7 +5,7 @@ import {
   addAuthHeaders,
   checkForErrors,
 } from './APIFetchDecorators';
-import { APIFetchArgs, APIFetchCall, APIFetchPromise } from './APIFetch';
+import { APIFetchArgs, APIFetchCall, APIFetchPromise } from './APIFetch.d';
 
 export enum APIFetchResponseMessage {
   OK = 'ok',

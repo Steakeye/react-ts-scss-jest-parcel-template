@@ -1,4 +1,5 @@
 import * as React from 'react';
+// eslint-disable-next-line node/no-extraneous-import
 import { RedirectProps, Redirect } from 'react-router';
 import { render, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';

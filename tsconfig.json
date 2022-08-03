@@ -26,5 +26,9 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "node_modules/@types/jest/index.d.ts"
+  ],
+  "exclude": ["./dev/**/*"]
 }

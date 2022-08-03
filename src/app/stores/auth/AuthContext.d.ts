@@ -19,7 +19,7 @@ interface AuthInternalData extends AuthData {
   appState?: AuthRedirectAppState;
 }
 
-type AuthContextValue = AuthData
+type AuthContextValue = AuthData;
 
 type AuthContext = React.Context<OptionalN<AuthContextValue>>;
 

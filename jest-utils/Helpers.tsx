@@ -1,17 +1,13 @@
 import React, { ReactElement } from 'react';
 import { BrowserRouter, RouteComponentProps } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
-import {
-  createMemoryHistory,
-  MemoryHistoryBuildOptions,
-  Location,
-} from 'history';
-import { match } from 'react-router';
+import { createMemoryHistory, Location, MemoryHistoryOptions } from 'history';
+import { RouteMatch } from 'react-router';
 import { RenderResult } from '@testing-library/react';
-// tslint:disable-next-line:ban-ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { Optional, POJSObject } from '~/app/declarations/standard';
+import { Optional } from '~/app/declarations/standard';
 
 export interface RouteWrapperConfig {
   children?: JSX.Element[];
@@ -36,7 +32,10 @@ export function getElementByQuery(
   return el.querySelector(query);
 }
 
-function mutateProps(props: POJSObject, stringifyObjects = true): void {
+function mutateProps(
+  props: Record<string, any>,
+  stringifyObjects = true
+): void {
   let key: string;
   // tslint:disable-next-line:forin
   for (key in props) {
@@ -68,10 +67,10 @@ function mutateProps(props: POJSObject, stringifyObjects = true): void {
   }
 }
 
-export interface MockRouteComponentProps<P> {
-  history?: Partial<MemoryHistoryBuildOptions>;
+export interface MockRouteComponentProps<P extends string> {
+  history?: Partial<MemoryHistoryOptions>;
   location?: Partial<Location>;
-  match?: Partial<match<P>>;
+  match?: Partial<RouteMatch<P>>;
 }
 
 export function createRouteComponentProps<T>({
@@ -140,7 +139,11 @@ export function getMockReturnValue<T extends unknown>(
   return mock.mock.results[index].value as T;
 }
 
-export function createMockAppEnums() {
+export function createMockAppEnums(): {
+  BaseReducerActionType: Record<string, string>;
+  AsyncReducerActionType: Record<string, string>;
+  EditableReducerActionType: Record<string, string>;
+} {
   enum mockBaseReducerActionType {
     Create = 'mock-create',
     Delete = 'mock-delete',
@@ -151,7 +154,6 @@ export function createMockAppEnums() {
   enum mockAsyncReducerActionType {
     Request = 'mock-request',
     Receive = 'mock-receive',
-    Request = 'mock-request',
   }
 
   enum mockEditableReducerActionType {
@@ -159,11 +161,9 @@ export function createMockAppEnums() {
     Reset = 'mock-reset',
   }
 
-  const appModule = {
+  return {
     BaseReducerActionType: mockBaseReducerActionType,
     AsyncReducerActionType: mockAsyncReducerActionType,
     EditableReducerActionType: mockEditableReducerActionType,
   };
-
-  return appModule;
 }

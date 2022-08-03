@@ -27,6 +27,7 @@ interface UrlPatternOptions {
 }
 
 export interface UrlPattern {
+  // eslint-disable-next-line @typescript-eslint/no-misused-new
   new (path: string, options?: UrlPatternOptions): UrlPattern;
   match(path: string): Optional<{}>;
 }

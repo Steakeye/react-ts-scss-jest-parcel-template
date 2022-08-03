@@ -1,4 +1,5 @@
 import * as React from 'react';
+// eslint-disable-next-line node/no-extraneous-import
 import { RouteComponentProps, Redirect } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { Views as ViewStrings } from '~/app/AppStrings';

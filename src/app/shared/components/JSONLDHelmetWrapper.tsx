@@ -13,6 +13,7 @@ function ExtractJSONLDDataAndInsertIntoHelmet(
   let jsonLDData: Optional<string>;
   let setJsonLDNode: Dispatch<SetStateAction<Optional<string>>>;
 
+  // eslint-disable-next-line prefer-const
   [jsonLDData, setJsonLDNode] = useState<Optional<string>>(undefined);
 
   useEffect(() => {

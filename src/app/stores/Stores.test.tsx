@@ -93,7 +93,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
           });
 
           expect(storeElement).toEqualJSX(
-            // tslint:disable-next-line:ban-ts-ignore
+            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
             // @ts-ignore
             <mockConstructor context={{ mockProp: 'mock-value' }} />
           );
@@ -113,7 +113,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
           >(MockComponent);
 
           expect(componentElement).toEqualJSX(
-            // tslint:disable-next-line:ban-ts-ignore
+            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
             // @ts-ignore
             <span
               context={JSON.stringify({ mockProp: 'mock-value' })}

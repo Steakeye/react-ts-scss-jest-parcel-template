@@ -1,9 +1,6 @@
-import {
-  BaseReducerActionType,
-} from '~/app/global/models';
+import { BaseReducerActionType } from '~/app/global/models';
 
-export type UserContextData = User & {
-};
+export type UserContextData = User & {};
 
 type UserReducerActionType =
   | BaseReducerActionType.Read

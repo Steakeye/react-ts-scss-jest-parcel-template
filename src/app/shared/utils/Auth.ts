@@ -1,9 +1,10 @@
+// eslint-disable-next-line node/no-extraneous-import
 import { Location } from 'history';
 import { getApplicationRootURL } from '~/app/shared/utils/AppDOM';
 import { AuthRedirectAppState } from '~/app/stores/auth/AuthContext.d';
 import { AUTH_ROUTE } from '~/app/AppRoutes';
 
-interface RedirectLoginOptions {
+export interface RedirectLoginOptions {
   redirect_uri: string;
   appState: AuthRedirectAppState;
 }
@@ -21,6 +22,7 @@ export function redirectToAuth(
   };
 
   authRedirect({
+    // eslint-disable-next-line @typescript-eslint/camelcase
     redirect_uri: `${root}${AUTH_ROUTE}`,
     appState,
   });

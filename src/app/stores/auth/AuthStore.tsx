@@ -32,6 +32,7 @@ function authReducer(
   let updatedState: AuthInternalData;
 
   //TODO: Reducer - implementation
+  // eslint-disable-next-line prefer-const
   updatedState = state;
 
   return updatedState;
