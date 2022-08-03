@@ -5,11 +5,8 @@ import { Stores } from './stores/Stores';
 import { AppHistory } from './AppHistory';
 import { AppRoutes } from './AppRoutes';
 
-//const supportsHistory = 'pushState' in window.history;
-
 function App() {
   return (
-    /*<Router forceRefresh={!supportsHistory}>*/
     <Router>
       <Stores>
         {/* AppHistory handles global navigation events, use it where you need to hook into that event */}

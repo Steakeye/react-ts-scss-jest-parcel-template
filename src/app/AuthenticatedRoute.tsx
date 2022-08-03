@@ -21,11 +21,10 @@ export function AuthenticatedRoute({ component, ...rest }: ExtendedRouteProps) {
   if (isReady && !isAuthenticated && !loading) {
     const location = useLocation();
 
-    redirectToAuth(location, loginWithRedirect);
+    redirectToAuth(location, loginWithRedirect!);
     view = null;
   } else if (isAuthenticated && user) {
-    //view = <Route {...rest} element={<View />} />;
-    view = <View {...rest} />;
+    view = <View />;
   } else {
     view = null;
   }
