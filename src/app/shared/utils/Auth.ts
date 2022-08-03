@@ -1,5 +1,3 @@
-// eslint-disable-next-line node/no-extraneous-import
-import { Location } from 'history';
 import { getApplicationRootURL } from '~/app/shared/utils/AppDOM';
 import { AuthRedirectAppState } from '~/app/stores/auth/AuthContext.d';
 import { AUTH_ROUTE } from '~/app/AppRoutes';
@@ -14,7 +12,6 @@ export function redirectToAuth(
   authRedirect: (options?: RedirectLoginOptions) => void
 ) {
   const root = getApplicationRootURL();
-  //const { location: { pathname, search, hash }} = history;
   const { pathname, search, hash } = location;
 
   const appState: AuthRedirectAppState = {
