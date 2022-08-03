@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect } from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Optional } from '~/app/declarations/standard';
 import { getRouteConfigFromPath } from '~/app/AppRoutesUtils';
 import { AppRoutes } from '~/app/AppRoutes';

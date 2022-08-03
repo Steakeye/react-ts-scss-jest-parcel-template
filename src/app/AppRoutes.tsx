@@ -12,25 +12,21 @@ const appRoutes: ExtendedRouteProps[] = [
   {
     path: BASE_ROUTE,
     component: Home,
-    exact: true,
     name: 'Home View',
   },
   {
     path: AUTH_ROUTE,
     component: Auth,
-    exact: true,
     name: 'Auth View',
   },
   {
     path: ERROR_ROUTE,
     component: ServerError,
-    exact: true,
     name: 'Server Error View',
   },
   {
     path: '/*',
     component: NotFound,
-    exact: true,
     name: 'Not Found View',
   },
 ];

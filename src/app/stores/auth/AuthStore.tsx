@@ -38,6 +38,8 @@ function authReducer(
   return updatedState;
 }
 
+function mockAuthRedirect() {}
+
 export const AuthStore = ({
   children,
   history,
@@ -66,6 +68,7 @@ export const AuthStore = ({
         isAuthError,
         user,
         loading,
+        loginWithRedirect: mockAuthRedirect,
       }}
     >
       {children}

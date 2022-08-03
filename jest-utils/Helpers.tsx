@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { BrowserRouter, RouteComponentProps } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory, Location, MemoryHistoryOptions } from 'history';
-import { RouteMatch } from 'react-router';
+import { match } from 'react-router-dom';
 import { RenderResult } from '@testing-library/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
@@ -70,7 +70,7 @@ function mutateProps(
 export interface MockRouteComponentProps<P extends string> {
   history?: Partial<MemoryHistoryOptions>;
   location?: Partial<Location>;
-  match?: Partial<RouteMatch<P>>;
+  match?: Partial<match<P>>;
 }
 
 export function createRouteComponentProps<T>({
