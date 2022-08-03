@@ -17,10 +17,12 @@ export interface AuthConfig {
   maxAge: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface URLsConfig {
   //TODO
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ExternalAssetsConfig {
   //TODO
 }

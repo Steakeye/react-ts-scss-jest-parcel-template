@@ -374,17 +374,8 @@ Starting the app in development mode is as simple as running the `start` script 
 be it `npm` or `yarn`.
 
 ### Development Setup
-At the moment there is as one-time task that needs to be undertaken if the project has not got font-awesome stlyes added
-to the main project source. This is in line with the font-awesome guidelines for using the library scss files as part of
- the the project. 
 
-The task is to copy over the styles and fonts from the font-awesome `node_modules` folder into the project. 
-Conveniently, there is a simple bash script for this:
-```shell script
-./dev-scripts/copy-fontawesome.sh
-```
-
-_*NOTE:* If these files already exist in the `src` folder then this script does not need to be executed._
+_*[Add setup details here if necessary.]*_
 
 ### Hot Module Reloading
 You will need to turn off ['Safe Write'](https://parceljs.org/hmr.html#safe-write) in your IDE/text-editor in order to 

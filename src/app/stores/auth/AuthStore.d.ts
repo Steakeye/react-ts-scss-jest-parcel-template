@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { RouteComponentProps } from "react-router";
-import { ImmutableDataReducerActionTypes } from "~/app/global/models.d";
-import { AuthData, AuthInternalData, AuthRedirectAppState } from "~/app/stores/auth/AuthContext.d";
+import { PathRouteProps } from 'react-router';
+import { ImmutableDataReducerActionTypes } from '~/app/global/models.d';
+import {
+  AuthInternalData,
+  AuthRedirectAppState,
+} from '~/app/stores/auth/AuthContext.d';
 
 //Temp
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TempAuthClientOptions {}
 
 type AuthReducerDispatchActionType = ImmutableDataReducerActionTypes | 'ready';
@@ -17,10 +21,8 @@ interface AuthProviderProps extends Partial<TempAuthClientOptions> {
   onRedirectCallback?: DefaultRedirectCallback;
 }
 
-type AuthStoreProps = React.PropsWithChildren<AuthProviderProps>
+type AuthStoreProps = React.PropsWithChildren<AuthProviderProps>;
 
-type AuthStoreFC = (
-  props: AuthStoreProps & RouteComponentProps
-) => JSX.Element;
+type AuthStoreFC = (props: AuthStoreProps & PathRouteProps) => JSX.Element;
 
 type DefaultRedirectCallback = (result: AuthRedirectAppState) => void;

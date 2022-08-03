@@ -1,4 +1,5 @@
 import * as React from 'react';
+// eslint-disable-next-line node/no-extraneous-import
 import { RouteComponentProps } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { JSONLDHelmetWrapper } from '~/app/shared/components/JSONLDHelmetWrapper';
@@ -41,10 +42,7 @@ function notFoundMetaDataComponents(): JSX.Element {
   );
 }
 
-function NotFound({
-  location: { search: query },
-  match: { params, url },
-}: RouteComponentProps<NotFoundFCProps>) {
+function NotFound() {
   return (
     <>
       {/* Meta content */}

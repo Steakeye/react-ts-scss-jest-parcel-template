@@ -21,7 +21,6 @@ function createInitialState(): AuthInternalData {
     isAuthError: false,
     user: undefined,
     loading: true,
-    popupOpen: false,
   };
 }
 
@@ -32,10 +31,14 @@ function authReducer(
   let updatedState: AuthInternalData;
 
   //TODO: Reducer - implementation
+  // eslint-disable-next-line prefer-const
   updatedState = state;
 
   return updatedState;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+function mockAuthRedirect() {}
 
 export const AuthStore = ({
   children,
@@ -65,16 +68,10 @@ export const AuthStore = ({
         isAuthError,
         user,
         loading,
+        loginWithRedirect: mockAuthRedirect,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
-
-const authStoreWithRouter = withRouter<
-  AuthStoreProps & RouteComponentProps,
-  AuthStoreFC
->(AuthStore);
-
-export { authStoreWithRouter as AuthStoreWithRouter };

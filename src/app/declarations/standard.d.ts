@@ -10,17 +10,22 @@ export interface POJSObject<T = unknown> {
 }*/
 
 // Plain Old JavaScript Dictionary
-export interface POJSODictionary extends POJSObject<string> {}
+export type POJSODictionary = Record<string, string>;
 
 //JSON
 export type JSONPrimitives = null | boolean | number | string;
-export type JSONProperties<P extends unknown = undefined> =
+
+export type JSONProperties<P = undefined> =
   | JSONPrimitives
   | JSONObject
   | JSONArray
   | P;
-export interface JSONObject extends POJSObject<JSONProperties> {}
-export interface JSONArray extends Array<JSONProperties> {}
+// eslint-disable-next-line
+// @ts-ignore
+export type JSONObject = Record<string, JSONProperties>;
+export type JSONArray = Array<JSONProperties>;
+// eslint-disable-next-line
+// @ts-ignore
 export type JSONData<T> = JSONProperties<T>;
 
 //Advanced Utility Types

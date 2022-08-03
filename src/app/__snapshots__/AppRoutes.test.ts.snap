@@ -4,25 +4,21 @@ exports[`Application Routes - route configuration and route related helper funct
 Array [
   Object {
     "component": "MockHomeView",
-    "exact": true,
     "name": "Home View",
     "path": "/",
   },
   Object {
     "component": "MockAuthView",
-    "exact": true,
     "name": "Auth View",
     "path": "/auth",
   },
   Object {
     "component": "MockServerErrorView",
-    "exact": true,
     "name": "Server Error View",
     "path": "/error",
   },
   Object {
     "component": "MockNotFoundView",
-    "exact": true,
     "name": "Not Found View",
     "path": "/*",
   },

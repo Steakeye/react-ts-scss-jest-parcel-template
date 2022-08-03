@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteProps } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { JsonLd } from 'react-schemaorg';
 import { WebPage } from 'schema-dts';
 import { JSONLDHelmetWrapper } from '~/app/shared/components/JSONLDHelmetWrapper';
 
 import { Views as ViewStrings } from '~/app/AppStrings';
-import { ServerErrorFCProps } from './Home';
+// import type { HomeFCProps } from './Home.d';
+import { RoutesProps } from 'react-router/lib/components';
 
 const { Home: viewStrings } = ViewStrings;
 
@@ -34,10 +35,7 @@ function homeMetaDataComponents(): JSX.Element {
   );
 }
 
-function Home({
-  location: { search: query },
-  match: { params, url },
-}: RouteComponentProps<ServerErrorFCProps>) {
+function Home() {
   return (
     <>
       {/* Meta content */}

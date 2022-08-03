@@ -1,4 +1,5 @@
-import { RouteComponentProps } from "react-router";
+// eslint-disable-next-line node/no-extraneous-import
+import { RouteComponentProps } from 'react-router';
 
 interface AuthFCProps {
   userID?: string;

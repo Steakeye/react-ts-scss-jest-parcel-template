@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { AuthStoreWithRouter as Auth } from './auth/AuthStore';
+import { AuthStore as Auth } from './auth/AuthStore';
 import { UserStore as User } from './user/UserStore';
 
-export type WithStoreWrappedComponent = React.JSXElementConstructor<{}> & {
+export type WithStoreWrappedComponent = React.JSXElementConstructor<
+  Record<string, unknown>
+> & {
   displayName: string;
 };
 
 export type WithStore<S> = <S>(
-  Component: React.JSXElementConstructor<{}>,
+  Component: React.JSXElementConstructor<Record<string, unknown>>,
   Store: React.Consumer<S>,
   storePropName?: string
 ) => WithStoreWrappedComponent;
@@ -23,7 +25,7 @@ function Stores(props: React.PropsWithChildren<{ children: React.ReactNode }>) {
 }
 
 function withStore<S>(
-  Component: React.JSXElementConstructor<{}>,
+  Component: React.JSXElementConstructor<Record<string, unknown>>,
   Store: React.Consumer<S>,
   storePropName = 'context'
 ): WithStoreWrappedComponent {

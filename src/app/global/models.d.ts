@@ -1,13 +1,22 @@
-import { Optional, OptionalN } from '~/app/declarations/standard';
+import { OptionalN } from '~/app/declarations/standard';
 
-export interface BaseReducerDispatchAction<Data, Type, SubType = undefined, Meta = undefined> {
+export interface BaseReducerDispatchAction<
+  Data,
+  Type,
+  SubType = undefined,
+  Meta = undefined
+> {
   type: Type;
-  subType?: SubType
+  subType?: SubType;
   data?: Data;
   meta?: Meta;
 }
 
-export type ImmutableDataReducerActionTypes = 'fetching' | 'error' | 'data' | 'reset';
+export type ImmutableDataReducerActionTypes =
+  | 'fetching'
+  | 'error'
+  | 'data'
+  | 'reset';
 export type MutableDataReducerActionTypes =
   | ImmutableDataReducerActionTypes
   | 'update';
@@ -28,7 +37,7 @@ export interface FetchPaginatedServiceHookStates
   page: OptionalN<number>;
 }
 
-export interface FetchServiceHookReducerDispatchAction<
+export type FetchServiceHookReducerDispatchAction<
   Data,
   Type extends ImmutableDataReducerActionTypes = ImmutableDataReducerActionTypes
-> extends BaseReducerDispatchAction<Data, Type> {}
+> = BaseReducerDispatchAction<Data, Type>;

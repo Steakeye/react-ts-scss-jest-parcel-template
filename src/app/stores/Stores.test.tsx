@@ -43,7 +43,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
   });
 
   describe('WithStore HOC', () => {
-    let WithStore: WithStore<{}>;
+    let WithStore: WithStore<Record<string, unknown>>;
     let ComponentWithStore: WithStoreWrappedComponent;
     let componentWithStoreInstance: RenderResult;
 
@@ -52,7 +52,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
     });
 
     describe('when used with a component', () => {
-      let MockStore: jest.Mock<React.Consumer<{}>>;
+      let MockStore: jest.Mock<React.Consumer<Record<string, unknown>>>;
       let MockComponent: jest.Mock<JSX.Element>;
 
       beforeAll(async () => {
@@ -62,7 +62,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
         });
         ComponentWithStore = WithStore(
           MockComponent,
-          (MockStore as unknown) as React.Consumer<{}>
+          (MockStore as unknown) as React.Consumer<Record<string, unknown>>
         );
         componentWithStoreInstance = render(<ComponentWithStore />);
       });
@@ -93,7 +93,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
           });
 
           expect(storeElement).toEqualJSX(
-            // tslint:disable-next-line:ban-ts-ignore
+            // eslint-disable-next-line
             // @ts-ignore
             <mockConstructor context={{ mockProp: 'mock-value' }} />
           );
@@ -113,7 +113,7 @@ describe.skip('Stores module - contains the aggregated stores component and the 
           >(MockComponent);
 
           expect(componentElement).toEqualJSX(
-            // tslint:disable-next-line:ban-ts-ignore
+            // eslint-disable-next-line
             // @ts-ignore
             <span
               context={JSON.stringify({ mockProp: 'mock-value' })}

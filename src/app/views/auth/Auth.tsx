@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps, Redirect } from 'react-router';
+// eslint-disable-next-line node/no-extraneous-import
+import { Navigate } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Views as ViewStrings } from '~/app/AppStrings';
-import { AuthFCProps } from './Auth.d';
 import { ERROR_ROUTE } from '~/app/AppRoutes';
 import { AuthContextValue } from '~/app/stores/auth/AuthContext.d';
 import { useAuth } from '~/app/stores/auth/AuthContext';
@@ -26,20 +27,18 @@ function authMetaDataComponents(): JSX.Element {
   );
 }
 
-function Auth({
-  location: { search: query },
-  match: { params, url },
-}: RouteComponentProps<AuthFCProps>) {
-  const redirectPath = new URLSearchParams(query).get(REDIRECT_QUERY_KEY);
+function Auth() {
+  const query = useSearchParams()[0];
+  const redirectPath = query.get(REDIRECT_QUERY_KEY);
 
   const { isAuthError } = useAuth() as AuthContextValue;
 
   let view: JSX.Element;
 
   if (isAuthError) {
-    view = <Redirect to={ERROR_ROUTE} />;
+    view = <Navigate to={ERROR_ROUTE} replace />;
   } else if (redirectPath) {
-    view = <Redirect to={redirectPath as string} />;
+    view = <Navigate to={redirectPath as string} replace />;
   } else {
     view = (
       <>

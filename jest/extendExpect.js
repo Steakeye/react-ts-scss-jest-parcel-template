@@ -7,7 +7,7 @@ expect.extend({
     const expectedJSXString = reactElementToJSXString(expected);
 
     const pass = receivedJSXString === expectedJSXString;
-    let resultMessageMatchFragment = pass ? 'to match' : 'to not match';
+    const resultMessageMatchFragment = pass ? 'to match' : 'to not match';
 
     return {
       message() {
@@ -21,7 +21,8 @@ expect.extend({
     const foundTagName = received.constructor.name;
     const isPass = received.constructor.name === foundTagName;
     return {
-      message: () => `expected ${expected} ${isPass ? 'and': 'but'} got ${foundTagName}`,
+      message: () =>
+        `expected ${expected} ${isPass ? 'and' : 'but'} got ${foundTagName}`,
       pass: isPass,
     };
   },

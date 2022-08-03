@@ -1,5 +1,5 @@
 import { APIFetchError } from './APIFetchError';
-import { APIStructuredResponseErrorItem } from './APIFetch';
+import { APIStructuredResponseErrorItem } from './APIFetch.d';
 
 describe('APIFetchError - custom Error type for failed API requests', () => {
   const mockErrorMessage = 'mock-error-message';
