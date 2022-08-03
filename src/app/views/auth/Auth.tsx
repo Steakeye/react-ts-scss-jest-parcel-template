@@ -1,7 +1,7 @@
 import * as React from 'react';
 // eslint-disable-next-line node/no-extraneous-import
-import {Navigate,} from 'react-router';
-import {useSearchParams } from 'react-router-dom';
+import { Navigate } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Views as ViewStrings } from '~/app/AppStrings';
 import { ERROR_ROUTE } from '~/app/AppRoutes';
@@ -28,7 +28,7 @@ function authMetaDataComponents(): JSX.Element {
 }
 
 function Auth() {
-  const query = useSearchParams()[0]
+  const query = useSearchParams()[0];
   const redirectPath = query.get(REDIRECT_QUERY_KEY);
 
   const { isAuthError } = useAuth() as AuthContextValue;

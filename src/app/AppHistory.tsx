@@ -22,5 +22,4 @@ function HistoryContainer(props: AppHistoryProps): ReactElement {
   return <>{props.children}</>;
 }
 
-
 export { HistoryContainer as AppHistory };
