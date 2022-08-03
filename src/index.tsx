@@ -1,9 +1,10 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.scss';
 import { App } from './app/App';
 import { getApplicationRootNode } from '~/app/shared/utils/AppDOM';
 
 const mountNode = getApplicationRootNode();
+const root = createRoot(mountNode);
 
-ReactDOM.render(<App />, mountNode);
+root.render(<App />);
